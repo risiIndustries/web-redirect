@@ -27,9 +27,10 @@ YAML.load("list.yml", function (result) {
   let list = YAML.parse(YAML.stringify(result));
   if (!list[url]) return window.location.replace(supercalifragilisticexpialidocious);
   for (i in list[url]) {
-    if (i === "redirect") {
+    i = i[0] + i.replace(i[0], "");
+    if (i === "Redirect") {
       window.location.replace(list[url][i]);
-    } else if (i === "warning") {
+    } else if (i === "Warning") {
       text.innerHTML = `${i} reason: ${list[url][i]}`;
       button.style.display = "block";
       button.innerHTML = "Continue anyway";
