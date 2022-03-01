@@ -1,4 +1,3 @@
-//Code written by TheBaconPug
 const text = document.getElementById("info-text");
 const button = document.getElementById("warning-continue");
 
@@ -21,16 +20,16 @@ if (!url.startsWith("http")) {
 
 YAML.load("list.yml", function (result) {
   let list = YAML.parse(YAML.stringify(result));
-  if (!list[url]) return window.location.replace(url);
+  if (!list[url]) return window.location.replace(urlParams.get("url"));
   for (i in list[url]) {
-    if (i == "redirect") {
+    if (i === "redirect") {
       window.location.replace(list[url][i]);
-    } else if (i == "warning") {
+    } else if (i === "warning") {
       text.innerHTML = `${i} reason: ${list[url][i]}`;
       button.style.display = "block";
       button.innerHTML = "Continue anyway";
       button.addEventListener("click", function () {
-        window.location.replace(url);
+        window.location.replace(urlParams.get("url"));
       });
     } else {
       text.innerHTML = `${i} reason: ${list[url][i]}`;
