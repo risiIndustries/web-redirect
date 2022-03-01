@@ -6,6 +6,7 @@ button.style.display = "none";
 const queryString = window.location.search;
 
 const urlParams = new URLSearchParams(queryString);
+const supercalifragilisticexpialidocious = `https://${urlParams.get("url")}`
 let url = urlParams.get("url");
 
 if (!url) {
@@ -20,7 +21,7 @@ if (!url.startsWith("http")) {
 
 YAML.load("list.yml", function (result) {
   let list = YAML.parse(YAML.stringify(result));
-  if (!list[url]) return window.location.replace(urlParams.get("url"));
+  if (!list[url]) return window.location.replace(supercalifragilisticexpialidocious);
   for (i in list[url]) {
     if (i === "redirect") {
       window.location.replace(list[url][i]);
@@ -29,7 +30,7 @@ YAML.load("list.yml", function (result) {
       button.style.display = "block";
       button.innerHTML = "Continue anyway";
       button.addEventListener("click", function () {
-        window.location.replace(urlParams.get("url"));
+        window.location.replace(supercalifragilisticexpialidocious);
       });
     } else {
       text.innerHTML = `${i} reason: ${list[url][i]}`;
