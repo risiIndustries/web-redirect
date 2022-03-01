@@ -1,0 +1,6 @@
+https://example.com:
+  blacklist: "Blocked while testing"
+https://example.org:
+  redirect: "https://risi.io"
+https://example.net:
+  warning: "This warning is for testing purposes. "
