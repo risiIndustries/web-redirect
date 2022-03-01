@@ -27,7 +27,7 @@ YAML.load("list.yml", function (result) {
   let list = YAML.parse(YAML.stringify(result));
   if (!list[url]) return window.location.replace(supercalifragilisticexpialidocious);
   for (i in list[url]) {
-    i = i[0] + i.replace(i[0], "");
+    i = i.replace(i[0], i[0].toUpperCase());
     if (i === "Redirect") {
       window.location.replace(list[url][i]);
     } else if (i === "Warning") {
