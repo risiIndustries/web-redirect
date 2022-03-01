@@ -6,10 +6,10 @@ button.style.display = "none";
 const queryString = window.location.search;
 
 const urlParams = new URLSearchParams(queryString);
-const supercalifragilisticexpialidocious = `https://${urlParams.get("url")}`
+const supercalifragilisticexpialidocious = urlParams.get("url");
 let url = urlParams.get("url");
 
-if (!url) {
+if (!supercalifragilisticexpialidocious) {
   text.innerHTML = "No URL specified";
 }
 
@@ -17,6 +17,10 @@ if (!url.startsWith("http")) {
   url = "https://" + url.split("/")[0];
 } else {
   url = "https://" + url.split("/")[2];
+}
+
+if (!supercalifragilisticexpialidocious.startsWith("http")) {
+  supercalifragilisticexpialidocious = `https://${supercalifragilisticexpialidocious}`
 }
 
 YAML.load("list.yml", function (result) {
