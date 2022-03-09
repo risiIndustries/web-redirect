@@ -6,7 +6,7 @@ button.style.display = "none";
 const queryString = window.location.search;
 
 const urlParams = new URLSearchParams(queryString);
-const supercalifragilisticexpialidocious = urlParams.get("url");
+let supercalifragilisticexpialidocious = urlParams.get("url");
 let url = urlParams.get("url");
 
 if (!supercalifragilisticexpialidocious) {
